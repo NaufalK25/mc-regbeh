@@ -1,0 +1,15 @@
+# Python
+Lib
+Scripts
+pyvenv.cfg
+__pycache__/
+*.pyc
+*.pyo
+
+
+# Env
+.env
+
+# Config
+.vscode
+.editorconfig
