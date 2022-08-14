@@ -14,7 +14,7 @@ bot = Bot(
     case_insensitive=True,
     command_prefix=DEFAULT_PREFIX,
     help_command=None,
-    owner_id=getenv('OWNER_ID'),
+    owner_id=getenv('DC_OWNER_ID'),
     self_bot=False
 )
 
