@@ -14,7 +14,7 @@ def get_server_info(minecraft_server: str):
 
 
 def is_server_online(response: Union[PingResponse, None]):
-    return hasattr(response, 'version') and re.match(r'^\d+\.\d+$', response.version.name)
+    return hasattr(response, 'version') and re.match(r'^\d+(\.\d+){1,2}$', response.version.name)
 
 
 def get_server_status(response: PingResponse) -> Tuple[str, Color]:
