@@ -1,1 +1,1 @@
-worker: src/wsgi.py
+worker: python src/wsgi.py
