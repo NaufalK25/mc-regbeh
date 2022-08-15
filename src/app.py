@@ -15,4 +15,6 @@ def home():
     return render_template('index.html')
 
 
-bot.run(getenv('DC_TOKEN'))
+if __name__ == '__main__':
+    bot.run(getenv('DC_TOKEN'))
+    app.run(threaded=True, port=5000)
