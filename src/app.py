@@ -1,8 +1,14 @@
+from os import getenv
 from threading import Thread
 
+from dotenv import load_dotenv
 from flask import Flask, render_template
 
-app = Flask('')
+from bot import bot
+
+load_dotenv(dotenv_path="./.env")
+
+app = Flask(__name__)
 
 
 @app.route('/')
@@ -17,3 +23,6 @@ def run():
 def keep_alive():
     t = Thread(target=run)
     t.start()
+
+
+bot.run(getenv('DC_TOKEN'))
