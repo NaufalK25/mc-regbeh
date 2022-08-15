@@ -1,7 +1,5 @@
 from flask import Flask, render_template
 
-from bot import bot
-
 app = Flask(__name__)
 
 

@@ -2,8 +2,8 @@ from os import getenv
 
 from dotenv import load_dotenv
 
-from app import app
-from bot import bot
+from app.main import app
+from app.bot import bot
 
 load_dotenv(dotenv_path="./.env")
 
