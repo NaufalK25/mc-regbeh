@@ -3,7 +3,8 @@ from os import getenv
 from discord.ext.commands import Bot, Context
 from dotenv import load_dotenv
 
-from bot.command import CommandList, on_ready as on_ready_command
+from bot.command import CommandList
+from bot.command import on_ready as on_ready_command
 
 load_dotenv(dotenv_path="./.env")
 
@@ -42,3 +43,6 @@ async def status_command(ctx: Context):
 @bot.command(name='players')
 async def players_command(ctx: Context):
     await command_list.players(ctx=ctx)
+
+
+bot.run(getenv('DC_TOKEN'))
