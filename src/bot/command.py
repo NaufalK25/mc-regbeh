@@ -1,9 +1,8 @@
 from discord import Color, Game, Status
 from discord.ext.commands import Bot, Context
 
-from bot.custom_embed import CustomEmbed, ErrorEmbed
-from bot.minecraft import (get_online_players, get_server_info,
-                           get_server_status)
+from custom_embed import CustomEmbed, ErrorEmbed
+from minecraft import get_online_players, get_server_info, get_server_status
 
 
 async def on_ready(bot: Bot):

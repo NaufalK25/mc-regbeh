@@ -3,8 +3,8 @@ from os import getenv
 from discord.ext.commands import Bot, Context
 from dotenv import load_dotenv
 
-from bot.command import CommandList
-from bot.command import on_ready as on_ready_command
+import command
+from command import CommandList
 
 load_dotenv(dotenv_path="./.env")
 
@@ -22,7 +22,7 @@ command_list = CommandList(minecraft_server=getenv('MC_SERVER'))
 
 @bot.event
 async def on_ready():
-    await on_ready_command(bot)
+    await command.on_ready(bot)
 
 
 @bot.command(name='address')
@@ -44,5 +44,6 @@ async def status_command(ctx: Context):
 async def players_command(ctx: Context):
     await command_list.players(ctx=ctx)
 
-
-bot.run(getenv('DC_TOKEN'))
+    
+if __name__ == '__main__':
+    bot.run(getenv('DC_TOKEN'))
