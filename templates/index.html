@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MC Regbeh</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <script defer src="{{ url_for('static', filename='js/index.js') }}"></script>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li>
+                    <a href="https://discord.com/api/oauth2/authorize?client_id=1006926660530086018&permissions=277025651776&scope=bot"
+                        target="_blank" rel="noopener noreferrer" class="discord">
+                        <p>Invite bot to your server</p>
+                        {{ svg.discord }}
+
+                    </a>
+                </li>
+
+                <li>
+                    <a href="https://github.com/NaufalK25/mc-regbeh" target="_blank" rel="noopener noreferrer"
+                        class="github">
+                        <p>View source code</p>
+                        {{ svg.github }}
+                    </a>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="main_header">
+            <article class="main_header_desc">
+                <h1>Play <span>Mine</span><span>Craft</span> along with Regbeh!</h1>
+
+                <article class="main_header_desc_status" data-color="{{ color }}">
+                    <div class="server_status_circle"></div>
+                    <p" class="server_status">
+                        Server is <span class="server_status_message">{{ server_status }}</span>
+                    </p>
+                </article>
+
+
+                <article class="main_header_desc_footer">
+
+                    <p>serveregbeh.aternos.me:53858</p>
+
+                    {{ svg.clipboard }}
+                </article>
+            </article>
+
+            <article class="main_header_svg">
+                {{ svg.game }}
+            </article>
+        </section>
+
+        <section class="main_cmd">
+            <h2>Command List</h2>
+        </section>
+    </main>
+
+    <footer>
+    </footer>
+</body>
+
+</html>

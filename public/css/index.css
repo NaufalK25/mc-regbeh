@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+:root {
+    --discord: #5865F2;
+    --github: #161614;
+    --primary: #6c63ff;
+    --secondary: #2f3136;
+    --tertiary: #e6e6e6;
+    --border-radius: 14px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+    font-family: 'PT Sans', Verdana, sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--secondary);
+    height: 100vh;
+    padding: 1rem;
+}
+
+.alert {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    background-color: var(--tertiary);
+    cursor: pointer;
+}
+
+nav {
+    background-color: var(--primary);
+    padding: 1rem;
+    border-radius: var(--border-radius)
+}
+
+nav ul {
+    display: flex;
+    justify-content: end;
+    gap: 0 1rem;
+}
+
+nav ul li {
+    list-style: none;
+}
+
+nav ul li a {
+    display: flex;
+    align-items: center;
+    gap: 0 1rem;
+    padding: 1.5rem;
+    background-color: var(--tertiary);
+    border: 1px solid;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    font-size: 15pt;
+}
+
+nav ul li a:active,
+nav ul li a:hover {
+    opacity: 0.8;
+}
+
+nav ul li a.discord {
+    color: var(--discord);
+    border-color: var(--discord);
+}
+
+nav ul li a.github {
+    color: var(--github);
+    border-color: var(--github);
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 100%;
+    padding: 2rem;
+    gap: 4rem 0;
+}
+
+.main_header {
+    display: flex;
+    justify-content: center;
+    gap: 0 1rem;
+}
+
+.main_header_desc {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem 0;
+    width: 50%;
+}
+
+.main_header_desc h1 {
+    color: var(--primary);
+    font-size: 45pt;
+}
+
+.main_header_desc h1 span:first-child {
+    color: #82a733;
+}
+
+.main_header_desc h1 span:last-child {
+    color: #755333;
+}
+
+.main_header_desc_status {
+    display: flex;
+    align-items: center;
+    gap: 0 0.5rem;
+}
+
+.main_header_desc_status>div {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+.main_header_desc_status>.server_status {
+    font-size: 20pt;
+    color: var(--tertiary);
+}
+
+.main_header_desc_footer {
+    display: flex;
+    align-items: center;
+    gap: 0 1rem;
+    color: var(--tertiary);
+    font-size: 15pt;
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    background-color: var(--primary);
+}
+
+.main_header_desc_footer svg {
+    width: 2rem;
+    cursor: pointer;
+}
+
+.main_header_desc_footer svg:hover {
+    opacity: 0.8;
+}
+
+.main_header_svg {
+    width: 50%;
+}
+
+.main_cmd {
+    display: flex;
+    justify-content: center;
+}
+
+.main_cmd h2 {
+    color: var(--primary);
+    font-size: 30pt;
+    font-weight: bold;
+    text-align: center;
+    border-bottom: 0.25rem solid var(--primary);
+    width: fit-content;
+}

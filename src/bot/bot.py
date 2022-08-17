@@ -44,6 +44,6 @@ async def status_command(ctx: Context):
 async def players_command(ctx: Context):
     await command_list.players(ctx=ctx)
 
-    
+
 if __name__ == '__main__':
     bot.run(getenv('DC_TOKEN'))
