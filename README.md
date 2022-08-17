@@ -1,6 +1,6 @@
 # MC-Regbeh
 
-<img src="https://heroku-badge.herokuapp.com/?app=mc-regbeh" alt="Heroku" />
+[![Heroku](http://heroku-badge.herokuapp.com/?app=angularjs-crypto&style=flat)](https://mc-regbeh.herokuapp.com/)
 
 Discord Bot for Minecraft Regbeh
 
