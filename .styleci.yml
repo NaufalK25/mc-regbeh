@@ -10,11 +10,7 @@ py:
     comment-indent: 4
   finder:
     exclude:
-      - "modules"
-      - "node_modules"
-      - "nova"
-      - "nova-components"
-      - "storage"
-      - "spark"
-      - "vendor"
+      - "Scripts"
+      - "Lib"
+      - "public"
     name: "*.py"
