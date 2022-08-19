@@ -25,6 +25,16 @@ async def on_ready():
     await command.on_ready(bot)
 
 
+@bot.command(name='help')
+async def help_command(ctx: Context):
+    await command_list.help(ctx=ctx)
+
+
+@bot.command(name='command')
+async def command_command(ctx: Context):
+    await command_list.command(ctx=ctx)
+
+
 @bot.command(name='address')
 async def address_command(ctx: Context):
     await command_list.address(ctx=ctx)

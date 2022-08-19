@@ -17,6 +17,40 @@ class CommandList:
     def __init__(self, minecraft_server: str):
         self.minecraft_server = minecraft_server
 
+    async def help(self, ctx: Context):
+        embed = CustomEmbed(
+            ctx=ctx,
+            title='Help',
+            description=f'''
+            Need help?
+            - Use `mc command` to get all commands and their descriptions
+            - Ask `@NaufalK` for more information
+            ''',
+            color=Color.gold()
+        )
+
+        await ctx.send(embed=embed)
+
+    async def command(self, ctx: Context):
+        command_list = {
+            'help': 'Show help message',
+            'command': 'Show command list',
+            'address': 'Get minecraft server address',
+            'version': 'Get minecraft version on server',
+            'status': 'Get minecraft server status',
+            'players': 'Get list of online players'
+        }
+
+        embed = CustomEmbed(
+            ctx=ctx,
+            title='Command List',
+            description='\n'.join(
+                f'**{command}** - {description}' for command, description in command_list.items()),
+            color=Color.blue()
+        )
+
+        await ctx.send(embed=embed)
+
     async def address(self, ctx: Context):
         embed = CustomEmbed(
             ctx=ctx,
