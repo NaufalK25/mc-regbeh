@@ -21,11 +21,7 @@ class CommandList:
         embed = CustomEmbed(
             ctx=ctx,
             title='Help',
-            description=f'''
-            Need help?
-            - Use `mc command` to get all commands and their descriptions
-            - Ask `@NaufalK` for more information
-            ''',
+            description=f'''Need help?\n- Use `mc command` to get all commands and their descriptions\n- Ask `@NaufalK` for more information''',
             color=Color.gold()
         )
 
@@ -45,7 +41,8 @@ class CommandList:
             ctx=ctx,
             title='Command List',
             description='\n'.join(
-                f'**{command}** - {description}' for command, description in command_list.items()),
+                f'**{command}** - {description}' for command, description in command_list.items()
+            ),
             color=Color.blue()
         )
 
