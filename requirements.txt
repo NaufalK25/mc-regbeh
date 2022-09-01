@@ -21,6 +21,7 @@ mcstatus==9.3.0
 mock==4.0.3
 multidict==6.0.2
 pycodestyle==2.9.1
+pymongo==4.2.0
 python-dotenv==0.20.0
 toml==0.10.2
 typing_extensions==4.3.0

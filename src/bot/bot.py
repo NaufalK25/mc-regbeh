@@ -1,6 +1,7 @@
 from os import getenv
 
 from discord.ext.commands import Bot, Context
+from discord.ext.tasks import loop
 from dotenv import load_dotenv
 
 import command
@@ -22,6 +23,11 @@ command_list = CommandList(minecraft_server=getenv('MC_SERVER'))
 
 @bot.event
 async def on_ready():
+    @loop(seconds=10)
+    async def server_online_notif_loop():
+        await command.server_online_notif_loop(bot)
+
+    server_online_notif_loop.start()
     await command.on_ready(bot)
 
 
@@ -33,6 +39,16 @@ async def help_command(ctx: Context):
 @bot.command(name='command')
 async def command_command(ctx: Context):
     await command_list.command(ctx=ctx)
+
+
+@bot.command(name='register')
+async def register_command(ctx: Context):
+    await command_list.register(ctx=ctx)
+
+
+@bot.command(name='unregister')
+async def unregister_command(ctx: Context):
+    await command_list.unregister(ctx=ctx)
 
 
 @bot.command(name='address')

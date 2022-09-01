@@ -1,9 +1,13 @@
 import re
+from os import getenv
 from typing import Tuple
 
 from discord import Color
+from dotenv import load_dotenv
 from mcstatus import JavaServer
 from mcstatus.pinger import PingResponse
+
+load_dotenv(dotenv_path='./.env')
 
 
 def get_server_info(minecraft_server: str):
@@ -19,6 +23,12 @@ def is_server_online(response: PingResponse | None):
 
 def get_server_status(response: PingResponse) -> Tuple[str, Color]:
     return ('Online', Color.green()) if is_server_online(response) else ('Offline', Color.red())
+
+
+def get_server_data():
+    response = get_server_info(getenv('MC_SERVER'))
+    server_status, color = get_server_status(response)
+    return response, server_status, color
 
 
 def is_player_exists(player: PingResponse.Players.Player):
