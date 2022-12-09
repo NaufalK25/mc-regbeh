@@ -21,9 +21,10 @@ def get_svg(filename: str):
 
 @app.route('/')
 def home():
-    response = get_server_info(getenv('MC_SERVER'))
+    server_name = getenv('MC_SERVER')
+    response = get_server_info(server_name)
     server_status, color = get_server_status(response)
-    
+
     svg = {
         'discord': get_svg('discord'),
         'github': get_svg('github'),
@@ -31,7 +32,7 @@ def home():
         'clipboard': get_svg('clipboard')
     }
 
-    return render_template('index.html', server_status=server_status, color=f'{color}', svg=svg)
+    return render_template('index.html', server_status=server_status, color=f'{color}', svg=svg, server_name=server_name)
 
 
 if __name__ == '__main__':
