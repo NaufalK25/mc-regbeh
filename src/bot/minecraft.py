@@ -1,4 +1,5 @@
 import re
+import json
 from os import getenv
 from typing import Tuple, Union
 
@@ -41,24 +42,27 @@ def get_player_name(player_data: Tuple[int, PingResponse.Players.Player]):
 
 
 def are_players_exists(players: PingResponse.Players):
-    return hasattr(players, 'sample')
+    return hasattr(players, 'sample') and players.sample is not None
 
 
 def get_players_name(players: PingResponse.Players):
     return '\n'.join(map(get_player_name, enumerate(players.sample))) if are_players_exists(players) else ''
 
 
-def are_there_online_players(response: Union[PingResponse, None], server_status: str):
+def are_there_online_players(response: PingResponse, server_status: str):
     return hasattr(response, 'players') and server_status == 'Online'
 
 
-def no_players_online(response: Union[PingResponse, None], server_status: str):
+def no_players_online(response: PingResponse, server_status: str):
     return not (are_there_online_players(response, server_status) and are_players_exists(response.players))
 
 
 def get_online_players(response: Union[PingResponse, None], server_status: str) -> Tuple[bool, str, str]:
-    if no_players_online(response, server_status):
+    if response is None:
         return False, '', ''
+
+    if no_players_online(response, server_status):
+        return True, 'No Player Online', 'No player online'
 
     players = response.players
     online_player = players.online
