@@ -1,9 +1,10 @@
-from sqlite3 import connect
 from discord import Color, Game, Status
+from discord.errors import Forbidden
 from discord.ext.commands import Bot, Context
 
 import connect
 from custom_embed import ChannelCustomEmbed, ContextCustomEmbed, ContextErrorEmbed
+from helpers import get_command_list
 from minecraft import get_online_players, get_server_data
 
 
@@ -72,16 +73,7 @@ class CommandList:
         await ctx.send(embed=embed)
 
     async def command(self, ctx: Context):
-        command_list = {
-            'help': 'Show help message',
-            'command': 'Show command list',
-            'register': 'Register channel to receive server status notifications',
-            'unregister': 'Unregister channel from receiving server status notifications',
-            'address': 'Get minecraft server address',
-            'version': 'Get minecraft version on server',
-            'status': 'Get minecraft server status',
-            'players': 'Get list of online players'
-        }
+        command_list = get_command_list()
 
         embed = ContextCustomEmbed(
             ctx=ctx,
@@ -230,3 +222,33 @@ class CommandList:
             )
 
         await ctx.send(embed=embed)
+
+    async def clear(sellf, ctx: Context):
+        total_chat_count = len(await ctx.channel.history().flatten())
+
+        try:
+            while total_chat_count > 0:
+                total_chat_count = len(await ctx.channel.history().flatten())
+
+                if total_chat_count == 0:
+                    embed = ContextCustomEmbed(
+                        ctx=ctx,
+                        title='Chat cleared',
+                        description='Chat cleared',
+                        color=Color.green()
+                    )
+                    await ctx.send(embed=embed)
+        except Forbidden:
+            embed = ContextErrorEmbed(
+                ctx=ctx,
+                title='Missing permission',
+                description='Missing Permission, add Manage Messages permmision to this bot if you want to use this command',
+            )
+            await ctx.send(embed=embed)
+        except AttributeError:
+            embed = ContextErrorEmbed(
+                ctx=ctx,
+                title='Can\'t use this command in Direct Message',
+                description='Can\'t use this command in Direct Message',
+            )
+            await ctx.send(embed=embed)

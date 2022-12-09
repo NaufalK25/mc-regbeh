@@ -6,6 +6,7 @@ from dotenv import load_dotenv
 
 import command
 from command import CommandList
+from helpers import is_app_mode
 
 load_dotenv(dotenv_path="./.env")
 
@@ -69,6 +70,12 @@ async def status_command(ctx: Context):
 @bot.command(name='players')
 async def players_command(ctx: Context):
     await command_list.players(ctx=ctx)
+
+
+if is_app_mode('development'):
+    @bot.command(name='clear')
+    async def clear_command(ctx: Context):
+        await command_list.clear(ctx=ctx)
 
 
 if __name__ == '__main__':
