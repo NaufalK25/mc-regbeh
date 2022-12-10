@@ -4,7 +4,7 @@ from discord.ext.commands import Bot, Context
 
 import connect
 from custom_embed import ChannelCustomEmbed, ContextCustomEmbed, ContextErrorEmbed
-from helpers import get_command_list
+from helpers import *
 from minecraft import get_online_players, get_server_data
 
 

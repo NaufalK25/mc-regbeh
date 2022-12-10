@@ -1,11 +1,9 @@
 # Python
-Lib
-Scripts
+Lib/
+Scripts/
 pyvenv.cfg
 __pycache__/
-*.pyc
-*.pyo
-
+*.py[cod]
 
 # Env
 .env

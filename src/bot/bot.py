@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 
 import command
 from command import CommandList
-from helpers import is_app_mode
+from helpers import *
 
 load_dotenv(dotenv_path="./.env")
 

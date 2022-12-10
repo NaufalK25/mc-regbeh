@@ -17,7 +17,7 @@ def get_server_info(minecraft_server: str):
         return None
 
 
-def is_server_online(response: Union[PingResponse, None]):
+def is_server_online(response: Union[PingResponse, None]) -> bool:
     return hasattr(response, 'version') and re.match(r'^\d+(\.\d+){1,2}$', response.version.name)
 
 

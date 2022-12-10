@@ -15,7 +15,7 @@ app = Flask(
 )
 
 
-def get_svg(filename: str):
+def svg(filename: str):
     return Markup(open(join(app.static_folder, 'svg', f'{filename}.svg')).read())
 
 
@@ -25,14 +25,10 @@ def home():
     response = get_server_info(server_name)
     server_status, color = get_server_status(response)
 
-    svg = {
-        'discord': get_svg('discord'),
-        'github': get_svg('github'),
-        'game': get_svg('game'),
-        'clipboard': get_svg('clipboard')
-    }
+    svgs = ['discord', 'github', 'game', 'clipboard']
+    svg_dict = {icon: svg(icon) for icon in svgs}
 
-    return render_template('index.html', server_status=server_status, color=f'{color}', svg=svg, server_name=server_name)
+    return render_template('index.html', server_status=server_status, color=f'{color}', svg=svg_dict, server_name=server_name)
 
 
 if __name__ == '__main__':
