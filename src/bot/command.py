@@ -3,10 +3,9 @@ from discord.errors import Forbidden
 from discord.ext.commands import Bot, Context
 
 import connect
-from aternos import Aternos
 from custom_embed import ChannelCustomEmbed, ContextCustomEmbed, ContextErrorEmbed
 from helpers import *
-from minecraft import get_online_players, get_server_data, is_server_offline, is_server_online
+from minecraft import get_online_players, get_server_data
 
 
 async def on_ready(bot: Bot):
@@ -62,7 +61,6 @@ async def server_online_notif_loop(bot: Bot):
 class CommandList:
     def __init__(self, minecraft_server: str):
         self.minecraft_server = minecraft_server
-        self.aternos = Aternos()
 
     async def help(self, ctx: Context):
         embed = ContextCustomEmbed(
@@ -222,75 +220,6 @@ class CommandList:
                 title='Server is offline',
                 description='Turn on the server to get the players'
             )
-
-        await ctx.send(embed=embed)
-
-    async def start(self, ctx: Context):
-        _, server_status, _ = get_server_data()
-
-        if is_server_online(server_status):
-            embed = ContextErrorEmbed(
-                ctx=ctx,
-                title='Server is already online',
-                description='Server is already online'
-            )
-
-            return await ctx.send(embed=embed)
-
-        self.aternos.start()
-
-        embed = ContextCustomEmbed(
-            ctx=ctx,
-            title='Server is starting',
-            description='Server is starting',
-            color=Color.gold()
-        )
-
-        await ctx.send(embed=embed)
-
-    async def stop(self, ctx: Context):
-        _, server_status, _ = get_server_data()
-
-        if is_server_offline(server_status):
-            embed = ContextErrorEmbed(
-                ctx=ctx,
-                title='Server is already offline',
-                description='Server is already offline'
-            )
-
-            return await ctx.send(embed=embed)
-
-        self.aternos.stop()
-
-        embed = ContextCustomEmbed(
-            ctx=ctx,
-            title='Server is stopping',
-            description='Server is stopping',
-            color=Color.gold()
-        )
-
-        await ctx.send(embed=embed)
-
-    async def restart(self, ctx: Context):
-        _, server_status, _ = get_server_data()
-
-        if is_server_offline(server_status):
-            embed = ContextErrorEmbed(
-                ctx=ctx,
-                title='Server is offline, you can\'t restart it',
-                description='Server is offline, you can\'t restart it'
-            )
-
-            return await ctx.send(embed=embed)
-
-        self.aternos.restart()
-
-        embed = ContextCustomEmbed(
-            ctx=ctx,
-            title='Server is restarting',
-            description='Server is restarting',
-            color=Color.gold()
-        )
 
         await ctx.send(embed=embed)
 

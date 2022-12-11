@@ -19,9 +19,6 @@ def get_command_list():
         'version': 'Get minecraft version on server',
         'status': 'Get minecraft server status',
         'players': 'Get list of online players',
-        # 'start': 'Start the minecraft server',
-        # 'stop': 'Stop the minecraft server',
-        # 'restart': 'Restart the minecraft server'
     }
 
     if is_app_mode('development'):
