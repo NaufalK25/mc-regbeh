@@ -72,6 +72,21 @@ async def players_command(ctx: Context):
     await command_list.players(ctx=ctx)
 
 
+@bot.command(name='start')
+async def start_command(ctx: Context):
+    await command_list.start(ctx=ctx)
+
+
+@bot.command(name='stop')
+async def stop_command(ctx: Context):
+    await command_list.stop(ctx=ctx)
+
+
+@bot.command(name='restart')
+async def restart_command(ctx: Context):
+    await command_list.restart(ctx=ctx)
+
+
 if is_app_mode('development'):
     @bot.command(name='clear')
     async def clear_command(ctx: Context):
